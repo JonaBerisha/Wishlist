@@ -9,6 +9,9 @@ public class User {
     private String password;
     private LocalDate birthDate;
 
+
+    public User() {}
+
     public User(String name, int id, String email, String password, LocalDate birthDate) {
         this.name = name;
         this.email = email;

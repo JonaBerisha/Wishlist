@@ -7,6 +7,8 @@ public class Item {
     private int id;
     private int wishListId;
 
+    public Item (){}
+
     public Item (String name, double price, String link, int id, int wishListId ){
         this.name = name;
         this.link = link;

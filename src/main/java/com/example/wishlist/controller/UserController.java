@@ -41,8 +41,8 @@ public class UserController {
         return "login";
     }
     @PostMapping("/register")
-    public String register(@RequestParam String email, @RequestParam String password, @RequestParam String name, @RequestParam LocalDate birthDate){
-        User user = userService.register(email,password, name, birthDate);
+    public String register(@RequestParam String email, @RequestParam String name, @RequestParam String password, @RequestParam LocalDate birthDate){
+        User user = userService.register(email, name, password, birthDate);
         if(user != null){
             return "redirect:/wishlist";
         }
