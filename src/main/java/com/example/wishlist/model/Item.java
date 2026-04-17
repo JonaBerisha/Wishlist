@@ -5,18 +5,14 @@ public class Item {
     private double price;
     private String link;
     private int id;
-    private String image;
     private int wishListId;
 
-    public Item(){}
-
-    public Item (String name, double price, String link, int id, int wishListId, String image ){
+    public Item (String name, double price, String link, int id, int wishListId ){
         this.name = name;
         this.link = link;
         this.id = id;
         this.price = price;
         this.wishListId = wishListId;
-        this.image = image;
     }
 
     public String getName() {
@@ -57,13 +53,5 @@ public class Item {
 
     public void setWishListId(int wishListId) {
         this.wishListId = wishListId;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 }
