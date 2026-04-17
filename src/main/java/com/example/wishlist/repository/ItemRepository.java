@@ -9,7 +9,6 @@ import java.util.List;
 
 @Repository
 public class ItemRepository {
-    @Autowired
     private final JdbcTemplate jdbcTemplate;
 
     public ItemRepository(JdbcTemplate jdbcTemplate) {

@@ -10,7 +10,6 @@ import java.util.List;
 
 @Repository
 public class WishRepository {
-    @Autowired
     private final JdbcTemplate jdbcTemplate;
 
     public WishRepository(JdbcTemplate jdbcTemplate) {
@@ -26,7 +25,7 @@ public class WishRepository {
     }
 
     public List<WishList> findByUserId(int userId) {
-        String sql = "SELECT * FROM wishlist WHERE user_id = ?";
+        String sql = "SELECT * FROM wishList WHERE user_id = ?";
 
         return jdbcTemplate.query(sql, new Object[]{userId}, (rs, rowNum) -> {
             WishList w = new WishList();
@@ -37,4 +36,4 @@ public class WishRepository {
         });
     }
 }
-}
+

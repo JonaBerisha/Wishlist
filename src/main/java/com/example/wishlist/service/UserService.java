@@ -22,7 +22,7 @@ public class UserService {
         }
         return null;
     }
-    public User register(String email, String name, String password, LocalDate birtDate){
+    public User register(String email, String name, String password, LocalDate birthDate){
         if(userRepository.findByEmail(email) != null){
             return null;
         }
@@ -31,8 +31,9 @@ public class UserService {
         user.setEmail(email);
         user.setName(name);
         user.setPassword(password);
-        user.setBirthDate(birtDate);
-        return userRepository.save(user);
+        user.setBirthDate(birthDate);
+        userRepository.save(user);
+        return user;
 
     }
 

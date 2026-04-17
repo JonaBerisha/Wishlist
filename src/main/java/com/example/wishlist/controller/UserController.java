@@ -36,7 +36,7 @@ public class UserController {
     public String login(@RequestParam String email, @RequestParam String password){
         User user = userService.login(email,password);
         if(user != null){
-            return "redirect:/wishlist";
+            return "redirect:/wishList";
         }
         return "login";
     }
@@ -44,7 +44,7 @@ public class UserController {
     public String register(@RequestParam String email, @RequestParam String password, @RequestParam String name, @RequestParam LocalDate birthDate){
         User user = userService.register(email,password, name, birthDate);
         if(user != null){
-            return "redirect:/wishlist";
+            return "redirect:/wishList";
         }
         return "register";
     }

@@ -20,12 +20,12 @@ public class ItemController {
     @PostMapping("/item")
     public String addItem(Item item){
         itemService.addItem(item);
-        return "redirect:/wishlist";
+        return "redirect:/wishList";
     }
     @GetMapping("/item/delete")
     public String deleteItem(@RequestParam int id) {
         itemService.deleteItem(id);
-        return "redirect:/wishlist";
+        return "redirect:/wishList";
     }
     @GetMapping("/item/sort")
     public String sort(@RequestParam int wishListId, Model model) {

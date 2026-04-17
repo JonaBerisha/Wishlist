@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserRepository {
-    @Autowired
     private JdbcTemplate jdbcTemplate;
 
     public User findByEmail(String email) {
