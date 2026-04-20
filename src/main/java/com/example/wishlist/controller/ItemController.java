@@ -20,18 +20,18 @@ public class ItemController {
     @PostMapping("/item")
     public String addItem(Item item){
         itemService.addItem(item);
-        return "redirect:/wishList";
+        return "redirect:/wishlist";
     }
     @GetMapping("/item/delete")
     public String deleteItem(@RequestParam int id) {
         itemService.deleteItem(id);
-        return "redirect:/wishList";
+        return "redirect:/wishlist";
     }
     @GetMapping("/item/sort")
     public String sort(@RequestParam int wishListId, Model model) {
 
         model.addAttribute("items", itemService.sortByPrice(wishListId));
-        return "wishList";
+        return "wishlist";
     }
     @GetMapping("/item/search")
     public String search(@RequestParam String keyword,
@@ -39,7 +39,7 @@ public class ItemController {
                          Model model) {
 
         model.addAttribute("items", itemService.searchItems(keyword, wishListId));
-        return "wishList";
+        return "wishlist";
     }
 
 

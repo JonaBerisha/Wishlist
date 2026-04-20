@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+
 @Controller
-@RequestMapping("/wishList")
+@RequestMapping("/wishlist")
 public class WishController {
     private final WishService wishService;
     private final ItemService itemService;
@@ -21,19 +23,16 @@ public class WishController {
         this.itemService = itemService;
     }
 
-    @GetMapping("/wishList")
-    public String getWishListPage(@RequestParam(required = false) Integer wishListId, Model model) {
-        model.addAttribute("wishLists", wishService.getWishLists(1));
-        if(wishListId != null){
-            model.addAttribute("items", itemService.getItems(wishListId));
-        }
-        model.addAttribute("wishListId", wishListId);
-        return "wishList";
+    @GetMapping
+    public String getWishListPage(Model model) {
+        model.addAttribute("wishlists", wishService.getWishLists(1));
+        model.addAttribute("items",new ArrayList<>());
+        return "wishlist";
     }
-    @PostMapping("/wishList")
+    @PostMapping
     public String createWishList(WishList wishList) {
         wishService.createWishList(wishList);
-        return "redirect:/wishList";
+        return "redirect:/wishlist";
     }
 
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.time.LocalDate;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/")
 
 public class UserController {
     private final UserService userService;
@@ -36,7 +36,7 @@ public class UserController {
     public String login(@RequestParam String email, @RequestParam String password){
         User user = userService.login(email,password);
         if(user != null){
-            return "redirect:/wishList";
+            return "redirect:/wishlist";
         }
         return "login";
     }
@@ -44,7 +44,7 @@ public class UserController {
     public String register(@RequestParam String email, @RequestParam String name, @RequestParam String password, @RequestParam LocalDate birthDate){
         User user = userService.register(email, name, password, birthDate);
         if(user != null){
-            return "redirect:/wishList";
+            return "redirect:/wishlist";
         }
         return "register";
     }

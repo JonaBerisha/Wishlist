@@ -7,7 +7,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserRepository {
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
+
+    public UserRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     public User findByEmail(String email) {
         String sql = "SELECT * FROM user WHERE email = ?";

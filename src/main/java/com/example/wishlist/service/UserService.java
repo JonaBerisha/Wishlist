@@ -32,7 +32,8 @@ public class UserService {
         user.setName(name);
         user.setPassword(password);
         user.setBirthDate(birtDate);
-        return userRepository.save(user);
+       userRepository.save(user);
+       return user;
 
     }
 
