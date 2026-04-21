@@ -3,20 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<h1>Register</h1>
+<main class="form-page">
+    <div class="form-box">
+
+<h1>Opret bruger</h1>
+
     <form action="/register" method="post">
-        <p>
+
             <input type="text" name="name" placeholder="Skriv din navn" required>
             <input type="email" name="email"  placeholder="Skriv din email" required>
             <input type="password" name="password"  placeholder="Skriv din kode" required>
             <input type="date" name="birthDate"  placeholder="indtast din fødselsdag" required>
-        </p>
 
-        <p>
-            <button>Opret bruger</button>
-        </p>
+            <button type="submit" class="btn btn-primary">
+                Opret bruger
+            </button>
     </form>
+        <p> Har du allerede en bruger?<a href="/login">Log ind</a></p>
+
+    </div>
+</main>
 </body>
 </html>
