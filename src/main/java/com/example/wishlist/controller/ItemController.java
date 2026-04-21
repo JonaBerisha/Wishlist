@@ -42,7 +42,7 @@ public class ItemController {
         return "wishlist";
     }
 
-    @GetMapping("/wishlist")
+    @GetMapping("/wishlist/items")
     public String showWishListDetail(@RequestParam int wishListId, Model model) {
         model.addAttribute("items", itemService.findByWishListId(wishListId));
         model.addAttribute("wishListId", wishListId);
