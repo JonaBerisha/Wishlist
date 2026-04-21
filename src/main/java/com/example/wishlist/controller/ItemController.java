@@ -20,18 +20,18 @@ public class ItemController {
     @PostMapping("/item")
     public String addItem(Item item){
         itemService.addItem(item);
-        return "redirect:/wishlist";
+        return "redirect:/wishlist/items?wishListId=" + item.getWishListId();
     }
     @GetMapping("/item/delete")
-    public String deleteItem(@RequestParam int id) {
+    public String deleteItem(@RequestParam int id, @RequestParam int wishListId) {
         itemService.deleteItem(id);
-        return "redirect:/wishlist";
+        return "redirect:/wishlist/items?wishListId=" + wishListId;
     }
     @GetMapping("/item/sort")
-    public String sort(@RequestParam int wishListId, Model model) {
+    public String sort(@RequestParam int wishListId) {
 
-        model.addAttribute("items", itemService.sortByPrice(wishListId));
-        return "wishlist";
+        //model.addAttribute("items", itemService.sortByPrice(wishListId));
+        return "redirect:/wishlist/items?wishListId=" + wishListId;
     }
     @GetMapping("/item/search")
     public String search(@RequestParam String keyword,
@@ -39,14 +39,21 @@ public class ItemController {
                          Model model) {
 
         model.addAttribute("items", itemService.searchItems(keyword, wishListId));
-        return "wishlist";
+        return "redirect:/wishlist/items?wishListId=" + wishListId + "&keyword" + keyword;
     }
 
     @GetMapping("/wishlist/items")
-    public String showWishListDetail(@RequestParam int wishListId, Model model) {
-        model.addAttribute("items", itemService.findByWishListId(wishListId));
-        model.addAttribute("wishListId", wishListId);
-        return"wishlist-detail";
+    public String showWishListDetail(@RequestParam int wishListId, @RequestParam(required = false) String keyword, @RequestParam(required = false) Boolean sort, Model model) {
+        //model.addAttribute("items", itemService.findByWishListId(wishListId));
+    if(keyword != null) {
+        model.addAttribute("items", itemService.searchItems(keyword, wishListId));
+    } else if(sort != null){
+        model.addAttribute("items", itemService.searchItems(keyword, wishListId));
+    }else{
+       model.addAttribute("items", itemService.getItems(wishListId));
+    }
+     model.addAttribute("wishListId", wishListId);
+    return"wishlist-detail";
     }
 
 

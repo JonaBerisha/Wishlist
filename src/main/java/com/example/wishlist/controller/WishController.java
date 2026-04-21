@@ -26,7 +26,8 @@ public class WishController {
     @GetMapping
     public String getWishListPage(Model model) {
         model.addAttribute("wishlists", wishService.getWishLists(1));
-        model.addAttribute("items",new ArrayList<>());
+
+        //model.addAttribute("items",new ArrayList<>());
         return "wishlist";
     }
     @PostMapping
