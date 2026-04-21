@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ønskeliste</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<h1>Ønskeliste</h1>
+
+<form action="/item/search" method="get">
+    <input type="text" name ="keyword">
+    <input type="hidden" name ="wishlistId" th:value="${wishListId}">
+    <button>Søg</button>
+</form>
+<a th:href="@{/item/sort(wishListId=${wishListId})}">
+    sorter lav til høj
+</a>
+
+<form action="/item/" method="post">
+    <input type="text" name="name">
+    <input type="number" name="price">
+    <input type="text" name="link">
+    <input type="text" name="image" placeholder="URL">
+    <input type="hidden" name="wishListId" th:value="${wishListId}">
+    <button>Tilføj</button>
+</form>
+    <table>
+        <tr>
+            <th>Navn</th>
+            <th>Pris</th>
+            <th>Link</th>
+            <th>Billede</th>
+        </tr>
+        <tr th:each="item : ${items}">
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.price}"></td>
+            <td>
+                <a th:href="${item.link}">Link</a>
+            </td>
+            <td>
+                <img th:src="${item.image}" width="60">
+                <a th:href="@{/item/delete(id=${item.id})}">Slet</a>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
