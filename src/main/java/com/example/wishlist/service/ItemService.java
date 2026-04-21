@@ -33,4 +33,10 @@ public class ItemService {
     public List<Item> searchItems(String keyword, int wishListId) {
         return itemRepository.search(keyword, wishListId);
     }
+
+    public List<Item> findByWishListId(int wishListId) {
+        return itemRepository.findByWishListId(wishListId);
+    }
+
+
 }

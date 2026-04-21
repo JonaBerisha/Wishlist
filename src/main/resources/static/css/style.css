@@ -1,7 +1,7 @@
 :root {
     --primary-color: #2e7d32;
     --primary-light: #66bb6a;
-    --backround-color: #f4f9f4;
+    --background-color: #f4f9f4;
     --button-light: #dcedc8;
     --text-color: #222;
     --white: #ffffff;
@@ -15,7 +15,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: var(--backround-color);
+    background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
 }
@@ -29,7 +29,7 @@ body {
 }
 
 .logo {
-    front-size: 28px;
+    font-size: 28px;
     color: var(--primary-color);
 }
 
@@ -47,6 +47,7 @@ body {
     font-weight: bold;
     display: inline-block;
     transition: 0.2s;
+    curser: pointer;
 }
 
 .btn-primary {
@@ -98,4 +99,59 @@ body {
 .contact h3 {
     margin-bottom: 12px;
     color: var(--primary-color);
+}
+
+.form-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--background-color);
+}
+
+.form-box {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    width: 320px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.form-box h1 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.form-box input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: var(--white);
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: var(--primary-light);
+    color: var(--white);
+}
+
+a {
+    color: var(--primary-color);
+}
+
+a:hover {
+    opacity: 0.8;
 }

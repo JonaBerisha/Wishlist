@@ -42,7 +42,7 @@ public class ItemRepository {
         jdbcTemplate.update(sql, id);
     }
     public List<Item> search(String keyword, int wishListId) {
-        String sql = "SELECT * FROM items WHERE wishList_id = ? AND name LIKE ?";
+        String sql = "SELECT * FROM items WHERE wishlist_id = ? AND name LIKE ?";
 
         return jdbcTemplate.query(sql,
                 new Object[]{wishListId, "%" + keyword + "%"},
@@ -56,7 +56,7 @@ public class ItemRepository {
                 });
     }
     public List<Item> sortByPrice(int wishListId) {
-        String sql = "SELECT * FROM items WHERE wishList_id = ? ORDER BY price ASC";
+        String sql = "SELECT * FROM items WHERE wishlist_id = ? ORDER BY price ASC";
 
         return jdbcTemplate.query(sql,
                 new Object[]{wishListId},
