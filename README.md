@@ -20,9 +20,9 @@ Projektet er en webbaseret aplikation, hvor man som bruger kan oprette ønskesed
 6. Github Actions
 
 ## Instalation
-1. Java 17+
-2. Maven
-3. MySQL
+1. Java 21
+3. Maven
+4. MySQL
 
 ## Usage
 1. Opret en bruger
