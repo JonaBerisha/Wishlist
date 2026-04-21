@@ -14,7 +14,7 @@ public class UserRepository {
     }
 
     public User findByEmail(String email) {
-        String sql = "SELECT * FROM user WHERE email = ?";
+        String sql = "SELECT * FROM users WHERE email = ?";
         return jdbcTemplate.query(sql, new Object[]{email}, rs -> {
             if (rs.next()) {
                 User user = new User();
@@ -22,7 +22,7 @@ public class UserRepository {
                 user.setEmail(rs.getString("email"));
                 user.setName(rs.getString("name"));
                 user.setPassword(rs.getString("password"));
-                user.setBirthDate(rs.getDate("birth date").toLocalDate());
+                user.setBirthDate(rs.getDate("birth_date").toLocalDate());
                 return user;
 
             }
@@ -31,7 +31,7 @@ public class UserRepository {
     }
 
     public void save(User user) {
-        String sql = "INSERT INTO user(email, password, name, birth date) ";
+        String sql = "INSERT INTO users (email, password, name, birth_date) VALUES (?,?,?,?)";
         jdbcTemplate.update(sql,
                 user.getEmail(),
                 user.getName(),
