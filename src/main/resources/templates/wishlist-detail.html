@@ -11,14 +11,14 @@
 
 <form action="/item/search" method="get">
     <input type="text" name ="keyword">
-    <input type="hidden" name ="wishlistId" th:value="${wishListId}">
+    <input type="hidden" name ="wishListId" th:value="${wishListId}">
     <button>Søg</button>
 </form>
 <a th:href="@{/item/sort(wishListId=${wishListId})}">
     sorter lav til høj
 </a>
 
-<form action="/item/" method="post">
+<form action="/item" method="post">
     <input type="text" name="name">
     <input type="number" name="price">
     <input type="text" name="link">
@@ -41,7 +41,9 @@
             </td>
             <td>
                 <img th:src="${item.image}" width="60">
-                <a th:href="@{/item/delete(id=${item.id})}">Slet</a>
+                <a th:href="@{/item/delete(id=${item.id},wishListId=${wishListId})}">
+                     Slet
+                </a>
             </td>
         </tr>
     </table>
