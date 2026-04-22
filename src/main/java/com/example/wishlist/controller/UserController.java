@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.time.LocalDate;
 
 @Controller
-//@RequestMapping("/")
+@RequestMapping("/")
 
 public class UserController {
     private final UserService userService;
