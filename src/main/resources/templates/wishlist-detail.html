@@ -8,6 +8,7 @@
 <body>
 
 <h1>Ønskeliste</h1>
+<a href="/wishlist">Tilbage til ønskelister</a>
 
 <p th:text="${wishListId}"></p>
 
@@ -17,8 +18,9 @@
     <button>Søg</button>
 </form>
 <a th:href="@{/item/sort(wishListId=${wishListId})}">
-    sorter lav til høj
+
 </a>
+<button>Sorter lav-høj</button>
 
 <form action="/item" method="post">
     <input type="text" name="name" required>

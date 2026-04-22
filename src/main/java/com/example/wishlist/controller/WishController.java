@@ -1,8 +1,10 @@
 package com.example.wishlist.controller;
 
+import com.example.wishlist.model.User;
 import com.example.wishlist.model.WishList;
 import com.example.wishlist.service.ItemService;
 import com.example.wishlist.service.WishService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,14 +26,21 @@ public class WishController {
     }
 
     @GetMapping
-    public String getWishListPage(Model model) {
-        model.addAttribute("wishlists", wishService.getWishLists(1));
+    public String getWishListPage(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if(user == null){
+            return "redirect:/login";
+        }
+        model.addAttribute("wishlists", wishService.getWishLists(user.getId()));
+        model.addAttribute("items", new ArrayList<>());
 
-        //model.addAttribute("items",new ArrayList<>());
         return "wishlist";
+
     }
     @PostMapping
-    public String createWishList(WishList wishList) {
+    public String createWishList(WishList wishList, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        wishList.setUserId(user.getId());
         wishService.createWishList(wishList);
         return "redirect:/wishlist";
     }

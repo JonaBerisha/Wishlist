@@ -16,12 +16,15 @@ public class ItemRepository {
     }
 
     public void save(Item item) {
-        String sql = "INSERT INTO items (name, price, wishlist_id) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO items (name, price, link, wishlist_id, image) VALUES (?, ?, ?, ?, ?)";
 
         jdbcTemplate.update(sql,
                 item.getName(),
                 item.getPrice(),
-                item.getWishListId());
+                item.getLink(),
+                item.getWishListId(),
+                item.getImage());
+
     }
 
     public List<Item> findByWishListId(int wishlistId) {
@@ -33,6 +36,8 @@ public class ItemRepository {
             item.setName(rs.getString("name"));
             item.setPrice(rs.getDouble("price"));
             item.setWishListId(rs.getInt("wishlist_id"));
+            item.setLink(rs.getString("link"));
+            item.setImage(rs.getString("image"));
             return item;
         });
     }
@@ -52,6 +57,8 @@ public class ItemRepository {
                     item.setName(rs.getString("name"));
                     item.setPrice(rs.getDouble("price"));
                     item.setWishListId(rs.getInt("wishList_id"));
+                    item.setLink(rs.getString("link"));
+                    item.setImage(rs.getString("image"));
                     return item;
                 });
     }
@@ -66,6 +73,8 @@ public class ItemRepository {
                     item.setName(rs.getString("name"));
                     item.setPrice(rs.getDouble("price"));
                     item.setWishListId(rs.getInt("wishlist_id"));
+                    item.setLink(rs.getString("link"));
+                    item.setImage(rs.getString("image"));
                     return item;
                 });
 }

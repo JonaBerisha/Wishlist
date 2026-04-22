@@ -31,7 +31,7 @@ public class UserRepository {
     }
 
     public void save(User user) {
-        String sql = "INSERT INTO users (email, password, name, birth_date) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO users (email, name, password, birth_date) VALUES (?,?,?,?)";
         jdbcTemplate.update(sql,
                 user.getEmail(),
                 user.getName(),

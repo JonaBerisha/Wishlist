@@ -28,10 +28,12 @@ public class ItemController {
         return "redirect:/wishlist/items?wishListId=" + wishListId;
     }
     @GetMapping("/item/sort")
-    public String sort(@RequestParam int wishListId) {
+    public String sort(@RequestParam int wishListId, Model model) {
 
-        //model.addAttribute("items", itemService.sortByPrice(wishListId));
-        return "redirect:/wishlist/items?wishListId=" + wishListId;
+        model.addAttribute("items", itemService.sortByPrice(wishListId));
+        model.addAttribute("wishListId", wishListId);
+        return "wishlist-detail";
+        //items?wishListId=" + wishListId;
     }
     @GetMapping("/item/search")
     public String search(@RequestParam String keyword,
@@ -39,7 +41,9 @@ public class ItemController {
                          Model model) {
 
         model.addAttribute("items", itemService.searchItems(keyword, wishListId));
-        return "redirect:/wishlist/items?wishListId=" + wishListId + "&keyword" + keyword;
+        model.addAttribute("wishListId", wishListId);
+        return "wishlist-detail";
+                //items?wishListId=" + wishListId + "&keyword" + keyword;
     }
 
     @GetMapping("/wishlist/items")
@@ -48,7 +52,7 @@ public class ItemController {
     if(keyword != null) {
         model.addAttribute("items", itemService.searchItems(keyword, wishListId));
     } else if(sort != null){
-        model.addAttribute("items", itemService.searchItems(keyword, wishListId));
+        model.addAttribute("items", itemService.sortByPrice(wishListId));
     }else{
        model.addAttribute("items", itemService.getItems(wishListId));
     }
