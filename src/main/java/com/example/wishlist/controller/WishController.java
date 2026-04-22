@@ -18,11 +18,11 @@ import java.util.ArrayList;
 @RequestMapping("/wishlist")
 public class WishController {
     private final WishService wishService;
-    private final ItemService itemService;
+    //private final ItemService itemService;
 
-    public WishController(WishService wishService, ItemService itemService) {
+    public WishController(WishService wishService) {
         this.wishService = wishService;
-        this.itemService = itemService;
+        //this.itemService = itemService;
     }
 
     @GetMapping
