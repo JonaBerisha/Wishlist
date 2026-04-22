@@ -6,7 +6,6 @@ import com.example.wishlist.service.ItemService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -33,7 +32,7 @@ public class ItemController {
         model.addAttribute("items", itemService.sortByPrice(wishListId));
         model.addAttribute("wishListId", wishListId);
         return "wishlist-detail";
-        //items?wishListId=" + wishListId;
+
     }
     @GetMapping("/item/search")
     public String search(@RequestParam String keyword,
@@ -43,7 +42,7 @@ public class ItemController {
         model.addAttribute("items", itemService.searchItems(keyword, wishListId));
         model.addAttribute("wishListId", wishListId);
         return "wishlist-detail";
-                //items?wishListId=" + wishListId + "&keyword" + keyword;
+
     }
 
     @GetMapping("/wishlist/items")
